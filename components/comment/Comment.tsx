@@ -1,15 +1,16 @@
-import React from "react";
-import useSWR from "swr";
+import React from 'react';
+import useSWR from 'swr';
 
-import CustomLink from "../common/CustomLink";
-import CustomImage from "../common/CustomImage";
-import Maybe from "../common/Maybe";
-import DeleteButton from "./DeleteButton";
-import checkLogin from "../../lib/utils/checkLogin";
-import storage from "../../lib/utils/storage";
+import CustomLink from '../common/CustomLink';
+import CustomImage from '../common/CustomImage';
+import Maybe from '../common/Maybe';
+import checkLogin from '../../lib/utils/checkLogin';
+import storage from '../../lib/utils/storage';
+
+import DeleteButton from './DeleteButton';
 
 const Comment = ({ comment }) => {
-  const { data: currentUser } = useSWR("user", storage);
+  const { data: currentUser } = useSWR('user', storage);
   const isLoggedIn = checkLogin(currentUser);
   const canModify =
     isLoggedIn && currentUser?.username === comment?.author?.username;

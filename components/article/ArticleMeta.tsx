@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import ArticleActions from "./ArticleActions";
-import CustomImage from "../common/CustomImage";
-import CustomLink from "../common/CustomLink";
+import CustomImage from '../common/CustomImage';
+import CustomLink from '../common/CustomLink';
+
+import ArticleActions from './ArticleActions';
 
 const ArticleMeta = ({ article }) => {
   if (!article) return;

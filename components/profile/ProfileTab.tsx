@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import NavLink from "../common/NavLink";
-import { usePageDispatch } from "../../lib/context/PageContext";
+import NavLink from '../common/NavLink';
+import { usePageDispatch } from '../../lib/context/PageContext';
 
 const ProfileTab = ({ profile }) => {
   const setPage = usePageDispatch();

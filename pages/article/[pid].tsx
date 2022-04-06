@@ -1,14 +1,14 @@
-import marked from "marked";
-import { useRouter } from "next/router";
-import React from "react";
-import useSWR from "swr";
+import marked from 'marked';
+import { useRouter } from 'next/router';
+import React from 'react';
+import useSWR from 'swr';
 
-import ArticleMeta from "../../components/article/ArticleMeta";
-import CommentList from "../../components/comment/CommentList";
-import ArticleAPI from "../../lib/api/article";
-import { Article } from "../../lib/types/articleType";
-import { SERVER_BASE_URL } from "../../lib/utils/constant";
-import fetcher from "../../lib/utils/fetcher";
+import ArticleMeta from '../../components/article/ArticleMeta';
+import CommentList from '../../components/comment/CommentList';
+import ArticleAPI from '../../lib/api/article';
+import { Article } from '../../lib/types/articleType';
+import { SERVER_BASE_URL } from '../../lib/utils/constant';
+import fetcher from '../../lib/utils/fetcher';
 
 const ArticlePage = (initialArticle) => {
   const router = useRouter();

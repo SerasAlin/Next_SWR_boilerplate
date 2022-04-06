@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 
 const TagInput = ({ tagList, addTag, removeTag }) => {
-  const [tag, setTag] = React.useState("");
+  const [tag, setTag] = React.useState('');
 
   const changeTagInput = (e) => setTag(e.target.value);
 
   const handleTagInputKeyDown = (e) => {
     switch (e.keyCode) {
-      case 13: // Enter
-      case 9: // Tab
-      case 188: // Comma
-        if (e.keyCode !== 9) e.preventDefault();
-        handleAddTag();
-        break;
-      default:
-        break;
+    case 13: // Enter
+    case 9: // Tab
+    case 188: // Comma
+      if (e.keyCode !== 9) e.preventDefault();
+      handleAddTag();
+      break;
+    default:
+      break;
     }
   };
 
   const handleAddTag = () => {
     if (!!tag) {
       addTag(tag);
-      setTag("");
+      setTag('');
     }
   };
 

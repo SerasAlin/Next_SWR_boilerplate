@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { SERVER_BASE_URL } from "../utils/constant";
-import { getQuery } from "../utils/getQuery";
+import { SERVER_BASE_URL } from '../utils/constant';
+import { getQuery } from '../utils/getQuery';
 
 const ArticleAPI = {
   all: (page, limit = 10) =>
@@ -53,7 +53,7 @@ const ArticleAPI = {
       JSON.stringify({ article }),
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Token ${encodeURIComponent(token)}`,
         },
       }
@@ -70,7 +70,7 @@ const ArticleAPI = {
       JSON.stringify({ article }),
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Token ${encodeURIComponent(token)}`,
         },
       }

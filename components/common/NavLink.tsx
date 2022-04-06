@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface NavLinkProps {
   href: string;
@@ -15,7 +15,7 @@ const NavLink = ({ href, as, children }: NavLinkProps) => {
     <Link href={href} as={as} passHref>
       <a
         className={`nav-link ${
-          encodeURIComponent(asPath) === encodeURIComponent(as) && `active`
+          encodeURIComponent(asPath) === encodeURIComponent(as) && 'active'
         }`}
       >
         {children}

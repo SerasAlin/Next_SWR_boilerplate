@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
-import React from "react";
-import useSWR from "swr";
+import { useRouter } from 'next/router';
+import React from 'react';
+import useSWR from 'swr';
 
-import CustomLink from "../common/CustomLink";
-import Maybe from "../common/Maybe";
-import NavLink from "../common/NavLink";
-import checkLogin from "../../lib/utils/checkLogin";
-import storage from "../../lib/utils/storage";
+import CustomLink from '../common/CustomLink';
+import Maybe from '../common/Maybe';
+import NavLink from '../common/NavLink';
+import checkLogin from '../../lib/utils/checkLogin';
+import storage from '../../lib/utils/storage';
 
 const TabList = () => {
-  const { data: currentUser } = useSWR("user", storage);
+  const { data: currentUser } = useSWR('user', storage);
   const isLoggedIn = checkLogin(currentUser);
   const router = useRouter();
   const {

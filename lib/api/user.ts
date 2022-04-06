@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-import { SERVER_BASE_URL } from "../utils/constant";
+import { SERVER_BASE_URL } from '../utils/constant';
 
 const UserAPI = {
   current: async () => {
-    const user: any = window.localStorage.getItem("user");
+    const user: any = window.localStorage.getItem('user');
     const token = user?.token;
     try {
-      const response = await axios.get(`/user`, {
+      const response = await axios.get('/user', {
         headers: {
           Authorization: `Token ${encodeURIComponent(token)}`,
         },
@@ -24,7 +24,7 @@ const UserAPI = {
         JSON.stringify({ user: { email, password } }),
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -40,7 +40,7 @@ const UserAPI = {
         JSON.stringify({ user: { username, email, password } }),
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -56,7 +56,7 @@ const UserAPI = {
         JSON.stringify({ user }),
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -66,7 +66,7 @@ const UserAPI = {
     }
   },
   follow: async (username) => {
-    const user: any = JSON.parse(window.localStorage.getItem("user"));
+    const user: any = JSON.parse(window.localStorage.getItem('user'));
     const token = user?.token;
     try {
       const response = await axios.post(
@@ -84,7 +84,7 @@ const UserAPI = {
     }
   },
   unfollow: async (username) => {
-    const user: any = JSON.parse(window.localStorage.getItem("user"));
+    const user: any = JSON.parse(window.localStorage.getItem('user'));
     const token = user?.token;
     try {
       const response = await axios.delete(

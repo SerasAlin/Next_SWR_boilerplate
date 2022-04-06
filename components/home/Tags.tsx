@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
+import useSWR from 'swr';
 
-import CustomLink from "../common/CustomLink";
-import LoadingSpinner from "../common/LoadingSpinner";
-import { usePageDispatch } from "../../lib/context/PageContext";
-import useSWR from "swr";
-import { SERVER_BASE_URL } from "../../lib/utils/constant";
-import fetcher from "../../lib/utils/fetcher";
-import ErrorMessage from "../common/ErrorMessage";
+import CustomLink from '../common/CustomLink';
+import LoadingSpinner from '../common/LoadingSpinner';
+import { usePageDispatch } from '../../lib/context/PageContext';
+import { SERVER_BASE_URL } from '../../lib/utils/constant';
+import fetcher from '../../lib/utils/fetcher';
+import ErrorMessage from '../common/ErrorMessage';
 
 const Tags = () => {
   const setPage = usePageDispatch();

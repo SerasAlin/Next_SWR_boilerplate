@@ -1,8 +1,7 @@
 import {
-  DEFAULT_PROFILE_IMAGE,
   DEFAULT_IMAGE_SOURCE,
-} from "../../lib/utils/constant";
-import handleBrokenImage from "../../lib/utils/handleBrokenImage";
+} from '../../lib/utils/constant';
+import handleBrokenImage from '../../lib/utils/handleBrokenImage';
 
 interface CustomImageProps {
   src: string;
@@ -16,7 +15,7 @@ const CustomImage = ({ src, alt, className }: CustomImageProps) => (
     data-src={src}
     src={DEFAULT_IMAGE_SOURCE}
     alt={alt}
-    className={className ? `${className} lazyload` : `lazyload`}
+    className={className ? `${className} lazyload` : 'lazyload'}
     onError={handleBrokenImage}
   />
 );

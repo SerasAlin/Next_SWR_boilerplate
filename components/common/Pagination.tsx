@@ -1,9 +1,10 @@
-import React from "react";
-import { trigger } from "swr";
+import React from 'react';
+import { trigger } from 'swr';
 
-import { getRange, getPageInfo } from "../../lib/utils/calculatePagination";
-import { usePageDispatch, usePageState } from "../../lib/context/PageContext";
-import Maybe from "./Maybe";
+import { getRange, getPageInfo } from '../../lib/utils/calculatePagination';
+import { usePageDispatch, usePageState } from '../../lib/context/PageContext';
+
+import Maybe from './Maybe';
 
 interface PaginationProps {
   total: number;
@@ -82,11 +83,11 @@ const Pagination = ({
     <nav>
       <ul className="pagination">
         <li className="page-item" onClick={handleFirstClick}>
-          <a className="page-link">{`<<`}</a>
+          <a className="page-link">{'<<'}</a>
         </li>
         <Maybe test={hasPreviousPage}>
           <li className="page-item" onClick={handlePrevClick}>
-            <a className="page-link">{`<`}</a>
+            <a className="page-link">{'<'}</a>
           </li>
         </Maybe>
 
@@ -95,7 +96,7 @@ const Pagination = ({
           return (
             <li
               key={page.toString()}
-              className={isCurrent ? "page-item active" : "page-item"}
+              className={isCurrent ? 'page-item active' : 'page-item'}
               onClick={(e) => handleClick(e, page)}
             >
               <a className="page-link">{page + 1}</a>
@@ -104,11 +105,11 @@ const Pagination = ({
         })}
         <Maybe test={hasNextPage}>
           <li className="page-item" onClick={handleNextClick}>
-            <a className="page-link">{`>`}</a>
+            <a className="page-link">{'>'}</a>
           </li>
         </Maybe>
         <li className="page-item" onClick={handleLastClick}>
-          <a className="page-link">{`>>`}</a>
+          <a className="page-link">{'>>'}</a>
         </li>
       </ul>
     </nav>

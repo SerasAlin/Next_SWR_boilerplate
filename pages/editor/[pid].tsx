@@ -1,14 +1,14 @@
-import axios from "axios";
-import Router, { useRouter } from "next/router";
-import React from "react";
-import useSWR from "swr";
+import axios from 'axios';
+import Router, { useRouter } from 'next/router';
+import React from 'react';
+import useSWR from 'swr';
 
-import ListErrors from "../../components/common/ListErrors";
-import TagInput from "../../components/editor/TagInput";
-import ArticleAPI from "../../lib/api/article";
-import { SERVER_BASE_URL } from "../../lib/utils/constant";
-import editorReducer from "../../lib/utils/editorReducer";
-import storage from "../../lib/utils/storage";
+import ListErrors from '../../components/common/ListErrors';
+import TagInput from '../../components/editor/TagInput';
+import ArticleAPI from '../../lib/api/article';
+import { SERVER_BASE_URL } from '../../lib/utils/constant';
+import editorReducer from '../../lib/utils/editorReducer';
+import storage from '../../lib/utils/storage';
 
 const UpdateArticleEditor = ({ article: initialArticle }) => {
   const initialState = {
@@ -21,20 +21,20 @@ const UpdateArticleEditor = ({ article: initialArticle }) => {
   const [isLoading, setLoading] = React.useState(false);
   const [errors, setErrors] = React.useState([]);
   const [posting, dispatch] = React.useReducer(editorReducer, initialState);
-  const { data: currentUser } = useSWR("user", storage);
+  const { data: currentUser } = useSWR('user', storage);
   const router = useRouter();
   const {
     query: { pid },
   } = router;
 
   const handleTitle = (e) =>
-    dispatch({ type: "SET_TITLE", text: e.target.value });
+    dispatch({ type: 'SET_TITLE', text: e.target.value });
   const handleDescription = (e) =>
-    dispatch({ type: "SET_DESCRIPTION", text: e.target.value });
+    dispatch({ type: 'SET_DESCRIPTION', text: e.target.value });
   const handleBody = (e) =>
-    dispatch({ type: "SET_BODY", text: e.target.value });
-  const addTag = (tag) => dispatch({ type: "ADD_TAG", tag: tag });
-  const removeTag = (tag) => dispatch({ type: "REMOVE_TAG", tag: tag });
+    dispatch({ type: 'SET_BODY', text: e.target.value });
+  const addTag = (tag) => dispatch({ type: 'ADD_TAG', tag: tag });
+  const removeTag = (tag) => dispatch({ type: 'REMOVE_TAG', tag: tag });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ const UpdateArticleEditor = ({ article: initialArticle }) => {
       JSON.stringify({ article: posting }),
       {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Token ${encodeURIComponent(currentUser?.token)}`,
         },
       }
@@ -56,7 +56,7 @@ const UpdateArticleEditor = ({ article: initialArticle }) => {
       setErrors(data.errors);
     }
 
-    Router.push(`/`);
+    Router.push('/');
   };
 
   return (

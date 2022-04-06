@@ -1,20 +1,21 @@
-import { useRouter } from "next/router";
-import React from "react";
-import useSWR from "swr";
+import { useRouter } from 'next/router';
+import React from 'react';
+import useSWR from 'swr';
 
-import ArticlePreview from "./ArticlePreview";
-import ErrorMessage from "../common/ErrorMessage";
-import LoadingSpinner from "../common/LoadingSpinner";
-import Maybe from "../common/Maybe";
-import Pagination from "../common/Pagination";
-import { usePageState } from "../../lib/context/PageContext";
+import ErrorMessage from '../common/ErrorMessage';
+import LoadingSpinner from '../common/LoadingSpinner';
+import Maybe from '../common/Maybe';
+import Pagination from '../common/Pagination';
+import { usePageState } from '../../lib/context/PageContext';
 import {
   usePageCountState,
   usePageCountDispatch,
-} from "../../lib/context/PageCountContext";
-import useViewport from "../../lib/hooks/useViewport";
-import { SERVER_BASE_URL, DEFAULT_LIMIT } from "../../lib/utils/constant";
-import fetcher from "../../lib/utils/fetcher";
+} from '../../lib/context/PageCountContext';
+import useViewport from '../../lib/hooks/useViewport';
+import { SERVER_BASE_URL, DEFAULT_LIMIT } from '../../lib/utils/constant';
+import fetcher from '../../lib/utils/fetcher';
+
+import ArticlePreview from './ArticlePreview';
 
 const ArticleList = () => {
   const page = usePageState();
@@ -28,33 +29,33 @@ const ArticleList = () => {
   const { asPath, pathname, query } = router;
   const { favorite, follow, tag, pid } = query;
 
-  const isProfilePage = pathname.startsWith(`/profile`);
+  const isProfilePage = pathname.startsWith('/profile');
 
   let fetchURL = `${SERVER_BASE_URL}/articles?offset=${page * DEFAULT_LIMIT}`;
 
   switch (true) {
-    case !!tag:
-      fetchURL = `${SERVER_BASE_URL}/articles${asPath}&offset=${
-        page * DEFAULT_LIMIT
-      }`;
-      break;
-    case isProfilePage && !!favorite:
-      fetchURL = `${SERVER_BASE_URL}/articles?favorited=${encodeURIComponent(
-        String(pid)
-      )}&offset=${page * DEFAULT_LIMIT}`;
-      break;
-    case isProfilePage && !favorite:
-      fetchURL = `${SERVER_BASE_URL}/articles?author=${encodeURIComponent(
-        String(pid)
-      )}&offset=${page * DEFAULT_LIMIT}`;
-      break;
-    case !isProfilePage && !!follow:
-      fetchURL = `${SERVER_BASE_URL}/articles/feed?offset=${
-        page * DEFAULT_LIMIT
-      }`;
-      break;
-    default:
-      break;
+  case !!tag:
+    fetchURL = `${SERVER_BASE_URL}/articles${asPath}&offset=${
+      page * DEFAULT_LIMIT
+    }`;
+    break;
+  case isProfilePage && !!favorite:
+    fetchURL = `${SERVER_BASE_URL}/articles?favorited=${encodeURIComponent(
+      String(pid)
+    )}&offset=${page * DEFAULT_LIMIT}`;
+    break;
+  case isProfilePage && !favorite:
+    fetchURL = `${SERVER_BASE_URL}/articles?author=${encodeURIComponent(
+      String(pid)
+    )}&offset=${page * DEFAULT_LIMIT}`;
+    break;
+  case !isProfilePage && !!follow:
+    fetchURL = `${SERVER_BASE_URL}/articles/feed?offset=${
+      page * DEFAULT_LIMIT
+    }`;
+    break;
+  default:
+    break;
   }
 
   const { data, error } = useSWR(fetchURL, fetcher);

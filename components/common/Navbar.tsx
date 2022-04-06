@@ -1,16 +1,17 @@
-import React from "react";
-import useSWR from "swr";
+import React from 'react';
+import useSWR from 'swr';
 
-import CustomLink from "./CustomLink";
-import Maybe from "./Maybe";
-import NavLink from "./NavLink";
-import { usePageDispatch } from "../../lib/context/PageContext";
-import checkLogin from "../../lib/utils/checkLogin";
-import storage from "../../lib/utils/storage";
+import { usePageDispatch } from '../../lib/context/PageContext';
+import checkLogin from '../../lib/utils/checkLogin';
+import storage from '../../lib/utils/storage';
+
+import CustomLink from './CustomLink';
+import Maybe from './Maybe';
+import NavLink from './NavLink';
 
 const Navbar = () => {
   const setPage = usePageDispatch();
-  const { data: currentUser } = useSWR("user", storage);
+  const { data: currentUser } = useSWR('user', storage);
   const isLoggedIn = checkLogin(currentUser);
 
   const handleClick = React.useCallback(() => setPage(0), []);

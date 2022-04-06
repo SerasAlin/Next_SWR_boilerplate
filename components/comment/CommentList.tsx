@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
-import React from "react";
-import useSWR from "swr";
+import { useRouter } from 'next/router';
+import React from 'react';
+import useSWR from 'swr';
 
-import Comment from "./Comment";
-import CommentInput from "./CommentInput";
-import ErrorMessage from "../common/ErrorMessage";
-import LoadingSpinner from "../common/LoadingSpinner";
+import ErrorMessage from '../common/ErrorMessage';
+import LoadingSpinner from '../common/LoadingSpinner';
+import { CommentType } from '../../lib/types/commentType';
+import { SERVER_BASE_URL } from '../../lib/utils/constant';
+import fetcher from '../../lib/utils/fetcher';
 
-import { CommentType } from "../../lib/types/commentType";
-import { SERVER_BASE_URL } from "../../lib/utils/constant";
-import fetcher from "../../lib/utils/fetcher";
+import CommentInput from './CommentInput';
+import Comment from './Comment';
 
 const CommentList = () => {
   const router = useRouter();
