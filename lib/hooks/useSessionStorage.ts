@@ -1,7 +1,7 @@
-import React from 'react';
+import { useState } from 'react';
 
 const useSessionStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = React.useState(() => {
+  const [storedValue, setStoredValue] = useState(() => {
     if (typeof window !== 'undefined') {
       const item = window.sessionStorage.getItem(key);
       return !!item ? JSON.parse(item) : initialValue;

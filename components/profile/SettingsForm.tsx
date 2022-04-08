@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Router from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
 import ListErrors from '../common/ListErrors';
@@ -9,9 +9,9 @@ import { SERVER_BASE_URL } from '../../lib/utils/constant';
 import storage from '../../lib/utils/storage';
 
 const SettingsForm = () => {
-  const [isLoading, setLoading] = React.useState(false);
-  const [errors, setErrors] = React.useState([]);
-  const [userInfo, setUserInfo] = React.useState({
+  const [isLoading, setLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [userInfo, setUserInfo] = useState({
     image: '',
     username: '',
     bio: '',

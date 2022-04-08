@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export type PageCountDispatch = React.Dispatch<any>;
 
@@ -15,7 +15,7 @@ const PageCountDispatchContext = React.createContext<
 >(undefined);
 
 const PageCountContextProvider = ({ children }: Props) => {
-  const [pageCount, setPageCount] = React.useState(1);
+  const [pageCount, setPageCount] = useState(1);
   return (
     <PageCountDispatchContext.Provider value={setPageCount}>
       <PageCountStateContext.Provider value={pageCount}>

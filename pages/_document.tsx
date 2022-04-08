@@ -1,13 +1,11 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
-import flush from 'styled-jsx/server';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     const { html, head } = ctx.renderPage();
-    const styles = flush();
-    return { html, head, styles, ...initialProps };
+    return { html, head, ...initialProps };
   }
 
   render() {

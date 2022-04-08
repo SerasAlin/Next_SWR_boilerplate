@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const useViewport = () => {
-  const [vw, setVW] = React.useState(0);
-  const [vh, setVH] = React.useState(0);
+  const [vw, setVW] = useState(0);
+  const [vh, setVH] = useState(0);
 
   React.useEffect(() => {
     const setSizes = () => {

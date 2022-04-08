@@ -1,5 +1,5 @@
 import React from 'react';
-import { trigger } from 'swr';
+import { mutate } from 'swr';
 
 import { getRange, getPageInfo } from '../../lib/utils/calculatePagination';
 import { usePageDispatch, usePageState } from '../../lib/context/PageContext';
@@ -38,7 +38,7 @@ const Pagination = ({
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
       e.preventDefault();
       setPage(index);
-      trigger(fetchURL);
+      mutate(fetchURL);
     },
     []
   );
@@ -47,7 +47,7 @@ const Pagination = ({
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
       e.preventDefault();
       setPage(0);
-      trigger(fetchURL);
+      mutate(fetchURL);
     },
     []
   );
@@ -56,7 +56,7 @@ const Pagination = ({
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
       e.preventDefault();
       setPage(page - 1);
-      trigger(fetchURL);
+      mutate(fetchURL);
     },
     []
   );
@@ -65,7 +65,7 @@ const Pagination = ({
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
       e.preventDefault();
       setPage(page + 1);
-      trigger(fetchURL);
+      mutate(fetchURL);
     },
     []
   );
@@ -74,7 +74,7 @@ const Pagination = ({
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
       e.preventDefault();
       setPage(lastIndex);
-      trigger(fetchURL);
+      mutate(fetchURL);
     },
     []
   );

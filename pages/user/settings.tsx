@@ -1,6 +1,6 @@
 import Router from 'next/router';
 import React from 'react';
-import useSWR, { mutate, trigger } from 'swr';
+import useSWR, { mutate } from 'swr';
 
 import SettingsForm from '../../components/profile/SettingsForm';
 import checkLogin from '../../lib/utils/checkLogin';
@@ -24,7 +24,7 @@ const Settings = ({ res }) => {
     e.preventDefault();
     window.localStorage.removeItem('user');
     mutate('user', null);
-    Router.push('/').then(() => trigger('user'));
+    Router.push('/').then(() => mutate('user'));
   };
 
   return (

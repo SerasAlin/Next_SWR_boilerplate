@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Router, { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 
 import ListErrors from '../../components/common/ListErrors';
@@ -18,8 +18,8 @@ const UpdateArticleEditor = ({ article: initialArticle }) => {
     tagList: initialArticle.tagList,
   };
 
-  const [isLoading, setLoading] = React.useState(false);
-  const [errors, setErrors] = React.useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
   const [posting, dispatch] = React.useReducer(editorReducer, initialState);
   const { data: currentUser } = useSWR('user', storage);
   const router = useRouter();

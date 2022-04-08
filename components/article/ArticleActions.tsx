@@ -1,6 +1,6 @@
 import Router, { useRouter } from 'next/router';
 import React from 'react';
-import useSWR, { trigger } from 'swr';
+import useSWR, { mutate } from 'swr';
 
 import CustomLink from '../common/CustomLink';
 import checkLogin from '../../lib/utils/checkLogin';
@@ -25,7 +25,7 @@ const ArticleActions = ({ article }) => {
     if (!result) return;
 
     await ArticleAPI.delete(pid, currentUser?.token);
-    trigger(`${SERVER_BASE_URL}/articles/${pid}`);
+    mutate(`${SERVER_BASE_URL}/articles/${pid}`);
     Router.push('/');
   };
 

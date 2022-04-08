@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import useSWR, { mutate, trigger } from 'swr';
+import useSWR, { mutate } from 'swr';
 
 import ArticleList from '../../components/article/ArticleList';
 import CustomImage from '../../components/common/CustomImage';
@@ -26,9 +26,7 @@ const Profile = ({ initialProfile }) => {
     error: profileError,
   } = useSWR(
     `${SERVER_BASE_URL}/profiles/${encodeURIComponent(String(pid))}`,
-    fetcher,
-    { initialData: initialProfile }
-  );
+    fetcher);
 
   if (profileError) return <ErrorMessage message="Can't load profile" />;
 
@@ -46,7 +44,7 @@ const Profile = ({ initialProfile }) => {
       false
     );
     UserAPI.follow(pid);
-    trigger(`${SERVER_BASE_URL}/profiles/${pid}`);
+    mutate(`${SERVER_BASE_URL}/profiles/${pid}`);
   };
 
   const handleUnfollow = async () => {
@@ -56,7 +54,7 @@ const Profile = ({ initialProfile }) => {
       true
     );
     UserAPI.unfollow(pid);
-    trigger(`${SERVER_BASE_URL}/profiles/${pid}`);
+    mutate(`${SERVER_BASE_URL}/profiles/${pid}`);
   };
 
   return (

@@ -1,8 +1,6 @@
-import marked from 'marked';
 import { useRouter } from 'next/router';
 import React from 'react';
 import useSWR from 'swr';
-
 import ArticleMeta from '../../components/article/ArticleMeta';
 import CommentList from '../../components/comment/CommentList';
 import ArticleAPI from '../../lib/api/article';
@@ -20,15 +18,10 @@ const ArticlePage = (initialArticle) => {
     data: fetchedArticle,
   } = useSWR(
     `${SERVER_BASE_URL}/articles/${encodeURIComponent(String(pid))}`,
-    fetcher,
-    { initialData: initialArticle }
+    fetcher
   );
 
   const { article }: Article = fetchedArticle || initialArticle;
-
-  const markup = {
-    __html: marked(article.body, { sanitize: true }),
-  };
 
   return (
     <div className="article-page">
@@ -41,7 +34,6 @@ const ArticlePage = (initialArticle) => {
       <div className="container page">
         <div className="row article-content">
           <div className="col-xs-12">
-            <div dangerouslySetInnerHTML={markup} />
             <ul className="tag-list">
               {article.tagList.map((tag) => (
                 <li key={tag} className="tag-default tag-pill tag-outline">

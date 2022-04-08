@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import Router from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 
 import CustomLink from '../common/CustomLink';
@@ -17,9 +17,9 @@ const NOT_FAVORITED_CLASS = 'btn btn-sm btn-outline-primary';
 const ArticlePreview = ({ article }) => {
   const setPage = usePageDispatch();
 
-  const [preview, setPreview] = React.useState(article);
-  const [hover, setHover] = React.useState(false);
-  const [currentIndex, setCurrentIndex] = React.useState(-1);
+  const [preview, setPreview] = useState(article);
+  const [hover, setHover] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(-1);
 
   const { data: currentUser } = useSWR('user', storage);
   const isLoggedIn = checkLogin(currentUser);
