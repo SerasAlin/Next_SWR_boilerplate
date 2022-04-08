@@ -4,7 +4,7 @@ interface ErrorMessageProps {
 }
 
 const ErrorMessage = ({ message }: ErrorMessageProps) => (
-  <React.Fragment>
+  <>
     <div className="error-container">
       <div className="error-content">{message}</div>
     </div>
@@ -25,7 +25,7 @@ const ErrorMessage = ({ message }: ErrorMessageProps) => (
         }
       `}
     </style>
-  </React.Fragment>
+  </>
 );
 
 export default ErrorMessage;

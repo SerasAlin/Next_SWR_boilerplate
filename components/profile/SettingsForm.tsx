@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Router from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
 import ListErrors from '../common/ListErrors';
@@ -22,7 +22,7 @@ const SettingsForm = () => {
   const { data: currentUser } = useSWR('user', storage);
   const isLoggedIn = checkLogin(currentUser);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isLoggedIn) return;
     setUserInfo({ ...userInfo, ...currentUser });
   }, []);
@@ -68,7 +68,7 @@ const SettingsForm = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <ListErrors errors={errors} />
       <form onSubmit={submitForm}>
         <fieldset>
@@ -131,7 +131,7 @@ const SettingsForm = () => {
           </button>
         </fieldset>
       </form>
-    </React.Fragment>
+    </>
   );
 };
 

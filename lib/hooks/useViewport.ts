@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useViewport = () => {
   const [vw, setVW] = useState(0);
   const [vh, setVH] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const setSizes = () => {
       if (window.innerWidth !== vw) {
         setVW(window.innerWidth);

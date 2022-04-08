@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
 import CustomImage from '../common/CustomImage';
@@ -20,7 +20,7 @@ const CommentInput = () => {
   const [content, setContent] = useState('');
   const [isLoading, setLoading] = useState(false);
 
-  const handleChange = React.useCallback((e) => {
+  const handleChange = useCallback((e) => {
     setContent(e.target.value);
   }, []);
 

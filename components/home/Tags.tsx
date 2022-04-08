@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import useSWR from 'swr';
 
 import CustomLink from '../common/CustomLink';
@@ -10,7 +10,7 @@ import ErrorMessage from '../common/ErrorMessage';
 
 const Tags = () => {
   const setPage = usePageDispatch();
-  const handleClick = React.useCallback(() => setPage(0), []);
+  const handleClick = useCallback(() => setPage(0), []);
   const { data, error } = useSWR(`${SERVER_BASE_URL}/tags`, fetcher);
 
   if (error) return <ErrorMessage message="Cannot load popular tags..." />;

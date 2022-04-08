@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { mutate } from 'swr';
 
 import { getRange, getPageInfo } from '../../lib/utils/calculatePagination';
@@ -34,8 +34,8 @@ const Pagination = ({
   });
   const pages = total > 0 ? getRange(firstPage, lastPage) : [];
 
-  const handleClick = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
+  const handleClick = useCallback(
+    (e: any, index: number) => {
       e.preventDefault();
       setPage(index);
       mutate(fetchURL);
@@ -43,8 +43,8 @@ const Pagination = ({
     []
   );
 
-  const handleFirstClick = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const handleFirstClick = useCallback(
+    (e: any) => {
       e.preventDefault();
       setPage(0);
       mutate(fetchURL);
@@ -52,8 +52,8 @@ const Pagination = ({
     []
   );
 
-  const handlePrevClick = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const handlePrevClick = useCallback(
+    (e: any) => {
       e.preventDefault();
       setPage(page - 1);
       mutate(fetchURL);
@@ -61,8 +61,8 @@ const Pagination = ({
     []
   );
 
-  const handleNextClick = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const handleNextClick = useCallback(
+    (e: any) => {
       e.preventDefault();
       setPage(page + 1);
       mutate(fetchURL);
@@ -70,8 +70,8 @@ const Pagination = ({
     []
   );
 
-  const handleLastClick = React.useCallback(
-    (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const handleLastClick = useCallback(
+    (e: any) => {
       e.preventDefault();
       setPage(lastIndex);
       mutate(fetchURL);

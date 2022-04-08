@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { createContext, Dispatch, useContext, useState } from 'react';
 
-export type PageCountDispatch = React.Dispatch<any>;
+export type PageCountDispatch = Dispatch<any>;
 
 interface Props {
-  children: React.ReactNode;
+  children: JSX.Element;
 }
 
-const PageCountStateContext = React.createContext<number | undefined>(
+const PageCountStateContext = createContext<number | undefined>(
   undefined
 );
 
-const PageCountDispatchContext = React.createContext<
+const PageCountDispatchContext = createContext<
   PageCountDispatch | undefined
 >(undefined);
 
@@ -26,12 +26,12 @@ const PageCountContextProvider = ({ children }: Props) => {
 };
 
 export const usePageCountState = () => {
-  const state = React.useContext(PageCountStateContext);
+  const state = useContext(PageCountStateContext);
   return state;
 };
 
 export const usePageCountDispatch = () => {
-  const dispatch = React.useContext(PageCountDispatchContext);
+  const dispatch = useContext(PageCountDispatchContext);
   return dispatch;
 };
 

@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { mutate } from 'swr';
 
 import ListErrors from '../common/ListErrors';
@@ -12,15 +12,15 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUsernameChange = React.useCallback(
+  const handleUsernameChange = useCallback(
     (e) => setUsername(e.target.value),
     []
   );
-  const handleEmailChange = React.useCallback(
+  const handleEmailChange = useCallback(
     (e) => setEmail(e.target.value),
     []
   );
-  const handlePasswordChange = React.useCallback(
+  const handlePasswordChange = useCallback(
     (e) => setPassword(e.target.value),
     []
   );
