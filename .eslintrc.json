@@ -1,26 +1,39 @@
 {
-  "parser":"@typescript-eslint/parser",
-  "plugins":[
-    "@typescript-eslint/eslint-plugin",
-    "unused-imports",
-    "import"
-  ],
-  "root":true,
-  "env":{
-    "node":true,
-    "jest":true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node":true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "simple-import-sort",
+    "unused-imports",
+    "import",
+    "react",
+    "@typescript-eslint"
+  ],
   "ignorePatterns":[
     ".eslintrc.js"
   ],
-  "rules":{
+  "rules": {
     "indent": ["warn", 2],
     "object-curly-spacing": ["error", "always"],
     "quotes": [1, "single"],
     "@typescript-eslint/interface-name-prefix":"off",
     "@typescript-eslint/explicit-function-return-type":"off",
     "@typescript-eslint/explicit-module-boundary-types":"off",
-    "@typescript-eslint/no-explicit-any":"off",
     "@typescript-eslint/no-unused-vars":"off",
     "unused-imports/no-unused-imports":"error",
     "unused-imports/no-unused-vars":[
@@ -54,6 +67,20 @@
           "function"
         ]
       }
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
+//    "sort-imports":
+//    [
+//      "error",
+//      {
+//        "ignoreCase": false,
+//        "ignoreDeclarationSort": false
+//      }
+//    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

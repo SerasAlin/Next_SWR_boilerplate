@@ -2,8 +2,8 @@ import Router from 'next/router';
 import React, { useCallback, useState } from 'react';
 import { mutate } from 'swr';
 
-import ListErrors from '../common/ListErrors';
 import UserAPI from '../../lib/api/user';
+import ListErrors from '../common/ListErrors';
 
 const LoginForm = () => {
   const [isLoading, setLoading] = useState(false);
@@ -58,7 +58,6 @@ const LoginForm = () => {
               onChange={handleEmailChange}
             />
           </fieldset>
-
           <fieldset className="form-group">
             <input
               className="form-control form-control-lg"
