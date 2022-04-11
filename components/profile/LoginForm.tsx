@@ -1,39 +1,35 @@
 import Router from 'next/router';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { mutate } from 'swr';
+import { useTranslation } from 'react-i18next';
 
 import UserAPI from '../../lib/api/user';
+import PasswordField from '../basic/PasswordField';
+import TextField from '../basic/TextField';
 import ListErrors from '../common/ListErrors';
+import LoadingSpinner from '../common/LoadingSpinner';
 
 const LoginForm = () => {
+  const { t } = useTranslation('common');
   const [isLoading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleEmailChange = useCallback(
-    (e) => setEmail(e.target.value),
-    []
-  );
-  const handlePasswordChange = useCallback(
-    (e) => setPassword(e.target.value),
-    []
-  );
+  let username: string;
+  let password: string;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const { data, status } = await UserAPI.login(email, password);
+      const { data, status, errors } = await UserAPI.login(username, password);
 
       if (status !== 200) {
-        setErrors(data.errors);
+        setErrors(errors);
       }
 
-      if (data?.user) {
-        window.localStorage.setItem('user', JSON.stringify(data.user));
-        mutate('user', data?.user);
+      if (data) {
+        window.localStorage.setItem('user', JSON.stringify(data));
+        mutate('user', data);
         Router.push('/');
       }
     } catch (error) {
@@ -44,40 +40,15 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-      <ListErrors errors={errors} />
-
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </fieldset>
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </fieldset>
-
-          <button
-            className="btn btn-lg btn-primary pull-xs-right"
-            type="submit"
-            disabled={isLoading}
-          >
-            Sign in
-          </button>
-        </fieldset>
-      </form>
-    </>
+    !isLoading ?
+      <>
+        <ListErrors errors={errors} />
+        <TextField onValueChange={value => { username = value; }} />
+        <br />
+        <PasswordField onValueChange={value => { password = value }} />
+        <br />
+        <button onClick={handleSubmit}>{t('LoginPage.LoginButton')}</button>
+      </> : <><LoadingSpinner/></>
   );
 };
 

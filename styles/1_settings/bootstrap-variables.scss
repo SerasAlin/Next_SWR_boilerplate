@@ -1,0 +1,44 @@
+$enable-grid-classes: true;
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
+
+$enable-deprecation-messages: true !default;
+
+$spacers: (
+  0: 0,
+  5: 5px,
+  10: 10px,
+  15: 15px,
+  20: 20px,
+  25: 25px,
+  30: 30px,
+  35: 35px,
+  40: 40px,
+  45: 45px,
+  50: 50px,
+  60: 60px,
+  65: 65px,
+  70: 70px,
+  80: 80px,
+  85: 85px,
+  90: 90px,
+  100: 100px,
+  110: 110px,
+  150: 150px,
+  250: 250px
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
+
+
+

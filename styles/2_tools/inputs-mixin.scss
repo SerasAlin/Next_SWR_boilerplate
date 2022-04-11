@@ -1,0 +1,19 @@
+@mixin fieldSize($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin fieldLook() {
+    background: $bgInputColor;
+    border: 1px solid $borderInputColor;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 4px;
+
+    &:active,
+    &:focus {
+        border: 1px solid $borderInputColorActive;
+    }
+}
+
+

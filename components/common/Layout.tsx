@@ -3,7 +3,11 @@ import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const Layout = ({ children }) => (
+interface LayoutPropsType {
+  children: any
+}
+
+const Layout = ({ children }: LayoutPropsType) => (
   <>
     <Navbar />
     {children}

@@ -1,21 +1,23 @@
-import Document, { Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 import React from 'react';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    const { html, head } = ctx.renderPage();
-    return { html, head, ...initialProps };
+    const { html } = ctx.renderPage();
+    return { html, ...initialProps };
   }
 
   render() {
+
     return (
-      <html lang="en">
+      <Html lang="en">
+        <Head><title>title</title></Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

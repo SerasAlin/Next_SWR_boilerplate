@@ -13,8 +13,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-light">
       <div className="container">
-
-        <Maybe test={!isLoggedIn}>
+        <Maybe test={isLoggedIn}>
             test maybe component
         </Maybe>
       </div>
